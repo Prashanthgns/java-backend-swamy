@@ -11,4 +11,7 @@ public class Car {
     public Car(int sp) {
         speed = sp;
     }
+    public void speedUp(){
+        speed +=10;
+    }
 }
