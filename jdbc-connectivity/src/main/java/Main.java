@@ -21,7 +21,8 @@ public class Main {
 //                System.out.println("Employee Created Successfully");
 //            }
         //service.find();
-           service.findEmployeeByName("pqr");
+           //service.findEmployeeByName("pqr");
+            service.txnDemo(13, "kol", Date.valueOf(LocalDate.now()), true, 1);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
