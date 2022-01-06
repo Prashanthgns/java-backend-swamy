@@ -7,11 +7,13 @@ public class Connectivity {
 
     public Connectivity() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
+
         connection = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/java_db",
                 "root",
                 "password"
         );
+        connection.setAutoCommit(false);
     }
 
     public Connection getConnection() {
