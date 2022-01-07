@@ -15,24 +15,53 @@ public class DbService {
         ps.setInt(1, empId);
         ps.setString(2, empNm);
         ps.setDate(3, dob);
-        ps.setBoolean(4, isManager );
+        ps.setBoolean(4, isManager);
         // above lines create SQL statement
 
         int affected = ps.executeUpdate(); // actually firing the query
         connection.commit();
         return affected;
-
     }
-
     // update query
-    public int update() {
-        return 0;
+    public int update(String emp_name,Date dob,int age,int emp_id) throws SQLException{
+        String sql = "update emp_info set emp_name=?,dob=?,age=? where emp_id= ?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setString(1,emp_name);
+        ps.setDate(2,dob);
+        ps.setInt(3,age);
+        ps.setInt(4,emp_id);
+        int affected = ps.executeUpdate();
+        
+        connection.commit();
+        return affected;
     }
 
     // delete query
-    public int delete() {
-        return 0;
+    public int delete(int emp_id) throws SQLException {
+        String sql= "delete from emp_info where emp_id=?";
+        PreparedStatement ps = connection.prepareStatement(sql);
+        ps.setInt(1,emp_id);
+        int affected = ps.executeUpdate();
+        connection.commit();
+
+
+        return affected;
     }
+        public void findEmployeeWthAgeGreaterThanTen() throws SQLException {
+            String sql = "select * from emp_info where age > 10 ";
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery(); // logical representation of physical table
+            while(rs.next()) {
+                int id = rs.getInt("emp_id");
+                String name = rs.getString("emp_name");
+                Date dob = rs.getDate("dob");
+                boolean isManager = rs.getBoolean("is_manager");
+                int age1 = rs.getInt("age");
+
+                System.out.println(" id : "+id + " name : " + name +" dob : "+dob.toString() +" Manager : "+isManager+" Age : "+age1);
+            }
+            rs.close();
+        }
 
     // select query
     public void find() throws SQLException {

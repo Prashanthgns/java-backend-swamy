@@ -4,6 +4,7 @@ import service.DbService;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -20,9 +21,12 @@ public class Main {
 //            if(cnt > 0) {
 //                System.out.println("Employee Created Successfully");
 //            }
-        //service.find();
-           //service.findEmployeeByName("pqr");
-            service.txnDemo(13, "kol", Date.valueOf(LocalDate.now()), true, 1);
+            //service.find();
+            //service.findEmployeeByName("pqr");
+            //service.txnDemo(17, "kol", Date.valueOf(LocalDate.now()), true, 1);
+            service.update("vishnu", Date.valueOf("1996-04-29"), 8, 12);
+            //service.delete(2);
+            //service.findEmployeeWthAgeGreaterThanTen();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
