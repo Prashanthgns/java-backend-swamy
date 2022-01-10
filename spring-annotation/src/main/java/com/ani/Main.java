@@ -1,4 +1,5 @@
 package com.ani;
+
 import com.ani.car.Bmw;
 import com.ani.car.Car;
 import com.ani.config.AppConfig;
@@ -10,8 +11,8 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-    // hey spring - i have written beans configuration in AppConfig class
-    ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        // hey spring - i have written beans configuration in AppConfig class
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
         Car car1 = (Car) context.getBean("car");
         car1.speedUp();
@@ -23,5 +24,5 @@ public class Main {
         Driver driver1 = (Driver) context.getBean("driver");
 
         Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
-}
+    }
 }
