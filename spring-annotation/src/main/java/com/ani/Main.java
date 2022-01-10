@@ -1,4 +1,5 @@
 package com.ani;
+import com.ani.car.Bmw;
 import com.ani.car.Car;
 import com.ani.config.AppConfig;
 import com.ani.driver.Driver;
@@ -12,9 +13,14 @@ public class Main {
     // hey spring - i have written beans configuration in AppConfig class
     ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 
-    Car car1 = (Car) context.getBean("car");
+        Car car1 = (Car) context.getBean("car");
+        car1.speedUp();
 
-    Driver driver1 = (Driver) context.getBean("driver");
+        Bmw bmw = context.getBean(Bmw.class);
+        bmw.openWindow();
+
+
+        Driver driver1 = (Driver) context.getBean("driver");
 
         Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
 }
