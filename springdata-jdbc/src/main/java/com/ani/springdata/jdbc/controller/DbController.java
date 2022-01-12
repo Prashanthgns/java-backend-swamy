@@ -33,4 +33,9 @@ public class DbController {
     List<Emp> employees() {
         return service.findEmployees();
     }
+    @PutMapping // PUT -> http://localhost:8080/db/
+    public String promoteEmployee(@RequestBody Emp emp) {
+        service.promoteEmployee(emp);
+        return "Employee Updated Successfully";
+    }
 }

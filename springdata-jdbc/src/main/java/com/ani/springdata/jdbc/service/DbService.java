@@ -64,4 +64,23 @@ public class DbService {
 
         return employees;
     }
+    public Emp findEmployeeById(int id) {
+        var sql = "select * from emp_info where emp_id = ?";
+        return template.queryForObject(
+                sql,
+                (rs, cnt) -> new Emp(
+                        rs.getInt("emp_id"),
+                        rs.getString("emp_name"),
+                        rs.getDate("dob").toString(),
+                        rs.getBoolean("is_manager")
+                ),
+                id
+        );
+    }
+
+
+    public void promoteEmployee(Emp emp) {
+        var sql = "update emp_info set is_manager = true where emp_id = ?";
+        template.update(sql, emp.getId());
+    }
 }
