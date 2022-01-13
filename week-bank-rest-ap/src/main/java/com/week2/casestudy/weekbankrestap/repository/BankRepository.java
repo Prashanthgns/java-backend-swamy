@@ -8,6 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface BankRepository extends JpaRepository<BankAccount, Long> {
+    // withdraw logic below is wrongly implemented, you need to deduct given amount from existing amount
+    // and set resulting amount as balance.
+
+    // @Query allows just select statements
    // allows firing insert, update and delete queries
    @Modifying              // @Query allows just select statements
     @Query(value = "update bank_account set balance = :bal where ac_num = :acNum", nativeQuery = true)
